@@ -1,3 +1,5 @@
+package DesignPatterns;
+
 public class Singleton2 {
     private static volatile Singleton2 singleton;
 
