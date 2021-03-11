@@ -1,5 +1,5 @@
 package SortingAlgorithm;
-
+//时间复杂度:O(nlong(n)) 空间复杂度:O(n) 稳定
 public class MergeSort {
     public void sort(int[] arr) {
         if (arr == null || arr.length <= 1) {
@@ -16,10 +16,10 @@ public class MergeSort {
         }
     }
     private void merge(int[] arr, int low, int mid, int high) {
-        int[] tmp = new int[high - low + 1];
+        int[] tmp = new int[high-low+1];
         int i = low, j = mid + 1, k = 0;
         for (; i <= mid && j <= high; k++) {
-            if (arr[i] < arr[j]) {
+            if (arr[i] <= arr[j]) {
                 tmp[k] = arr[i++];
             } else {
                 tmp[k] = arr[j++];

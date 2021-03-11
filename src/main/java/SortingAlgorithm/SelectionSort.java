@@ -1,5 +1,5 @@
 package SortingAlgorithm;
-
+//时间复杂度:O(n2) 空间复杂度:O(1) 不稳定
 public class SelectionSort {
     public void sort(int[] arr) {
         if (arr == null || arr.length <= 1) {

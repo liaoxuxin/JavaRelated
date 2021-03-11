@@ -1,5 +1,5 @@
 package SortingAlgorithm;
-
+//时间复杂度:O(nlog(n)) 空间复杂度:O(logn) 不稳定
 public class QuickSort {
     public void sort(int[] arr) {
         if (arr == null || arr.length <= 1) {
