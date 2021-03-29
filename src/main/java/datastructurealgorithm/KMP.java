@@ -1,3 +1,5 @@
+package datastructurealgorithm;
+
 public class KMP {
     private int[] next;
     private void buildNext(char[] p) {

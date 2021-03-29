@@ -1,4 +1,4 @@
-package tree;
+package datastructurealgorithm.tree;
 
 import java.util.*;
 
