@@ -5,36 +5,36 @@ import java.util.concurrent.locks.*;
 //一个对象的生产者，消费者模型
 public class Producer_Consumer {
 
-    private Object object;
+    private volatile Object object;
     private Lock lock = new ReentrantLock();
     private Condition nullCondition = lock.newCondition();
     private Condition notNullConditon = lock.newCondition();
 
     public void put(Object ob) throws InterruptedException {
         lock.lock();
-        if (object == null) {
+        try {
+            while (object != null) {
+                nullCondition.await();
+            }
             object = ob;
             notNullConditon.signal();
-        } else {
-            System.out.println("put阻塞中。。。");
-            nullCondition.await();
-            object = ob;
+        } finally {
+            lock.unlock();
         }
-        lock.unlock();
     }
 
     public Object take() throws InterruptedException {
         lock.lock();
-        if (object == null) {
-            System.out.println("take阻塞中。。。");
-            notNullConditon.await();
-            return object;
-        } else {
+        try {
+            while (object == null) {
+                notNullConditon.await();
+            }
             Object tmp = object;
             object = null;
             nullCondition.signal();
-            lock.unlock();
             return tmp;
+        } finally {
+            lock.unlock();
         }
     }
 
