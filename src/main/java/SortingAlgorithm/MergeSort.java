@@ -1,5 +1,6 @@
 package SortingAlgorithm;
-//时间复杂度:O(nlong(n)) 空间复杂度:O(n) 稳定
+//时间复杂度:O(nlog(n)) 空间复杂度:O(n) 稳定
+//空间复杂度是O（n+log(n)），即为O(n)
 public class MergeSort {
     public void sort(int[] arr) {
         if (arr == null || arr.length <= 1) {
